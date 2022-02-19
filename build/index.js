@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -15,16 +24,12 @@ app.listen(port, () => {
 });
 // we will use fs to read the image from the file system
 const readImage = (filename) => {
-    return fs_1.default.readFileSync(`./assets/full/${filename}.jpg`);
+    return fs_1.default.readFileSync(`./assets/full/${filename}.jpg`, { flag: "r" });
 };
 // here we will use sharp to resize the image
-const ImageTansform = (filename, width, height) => {
-    (0, sharp_1.default)(readImage(filename))
-        .resize(width, height)
-        .toFormat("jpeg")
-        .toBuffer()
-        .then((data) => {
-        fs_1.default.writeFileSync(`./assets/thumb/${filename}.jpg`, data);
-    });
-};
+const ImageTansform = (filename, width, height) => __awaiter(void 0, void 0, void 0, function* () {
+    const Image = yield (0, sharp_1.default)(`./assets/full/${filename}.jpg`);
+    const resizedImage = yield Image.resize(width, height);
+    return resizedImage.toBuffer();
+});
 exports.default = ImageTansform;
