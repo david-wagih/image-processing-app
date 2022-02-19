@@ -19,13 +19,12 @@ const readImage = (filename: string) => {
 
 // here we will use sharp to resize the image
 const ImageTansform = (filename: string, width: number, height: number) => {
-  sharp(`assets\\full\\${filename}.jpg`)
+  sharp(readImage(filename))
     .resize(width, height)
-    .toFormat("jpeg")
-    .toBuffer();
-  // .then((data) => {
-  //   fs.writeFileSync(`./assets/thumb/${filename}.jpg`, data);
-  // });
+    .toBuffer()
+    .then((data) => {
+      fs.writeFileSync(`./assets/thumb/${filename}_thumb.jpg`, data);
+    });
 };
 
 export default ImageTansform;
