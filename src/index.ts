@@ -2,6 +2,7 @@ import express from "express";
 import sharp from "sharp";
 import fs from "fs";
 import routes from "./routes/index";
+
 const app = express();
 
 const port = 3000;
@@ -23,9 +24,9 @@ const ImageTansform = async (
   width: number,
   height: number
 ) => {
-  const Image = await sharp(`./assets/full/${filename}.jpg`);
-  const resizedImage = await Image.resize(width, height);
-  return resizedImage.toBuffer();
+  await sharp("./assets/full/" + filename + ".jpg")
+    .resize(Number(width), Number(height))
+    .toFile(`./assets/thumb/${filename}.jpg`);
 };
 
 export default ImageTansform;

@@ -28,8 +28,8 @@ const readImage = (filename) => {
 };
 // here we will use sharp to resize the image
 const ImageTansform = (filename, width, height) => __awaiter(void 0, void 0, void 0, function* () {
-    const Image = yield (0, sharp_1.default)(`./assets/full/${filename}.jpg`);
-    const resizedImage = yield Image.resize(width, height);
-    return resizedImage.toBuffer();
+    yield (0, sharp_1.default)("./assets/full/" + filename + ".jpg")
+        .resize(Number(width), Number(height))
+        .toFile(`./assets/thumb/${filename}.jpg`);
 });
 exports.default = ImageTansform;
