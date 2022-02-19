@@ -20,7 +20,7 @@ const readImage = (filename: string) => {
 // here we will use sharp to resize the image
 const ImageTansform = (filename: string, width: number, height: number) => {
   sharp(`assets\\full\\${filename}.jpg`)
-    .resize(200, 200)
+    .resize(width, height)
     .toFormat("jpeg")
     .toBuffer();
   // .then((data) => {
