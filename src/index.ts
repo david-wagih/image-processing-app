@@ -3,6 +3,7 @@ import sharp from "sharp";
 import routes from "./routes/index";
 import path from "path";
 import fs from "fs";
+import { checkExistedFile } from "./middlewares/checkExistedFile";
 
 const app = express();
 
@@ -15,28 +16,25 @@ app.listen(port, () => {
 });
 
 // here we will use sharp to resize the image
+// todo : the problem is that we override the file exists at that directory
 const ImageTansform = async (
   filename: string,
   width: number,
   height: number
 ) => {
-  const fullImagesPath = path.resolve(
-    "src",
-    "assets",
-    "full",
-    `${filename}.jpg`
-  );
-  const thumbImagesPath = path.resolve(
-    "src",
-    "assets",
-    "thumb",
-    `${filename}.jpg`
-  );
-  const Image = sharp(fullImagesPath);
-  const ResizedImage = Image.resize(Number(width), Number(height));
-  // todo :  this is some problem here
-  fs.writeFileSync(thumbImagesPath, await ResizedImage.toBuffer());
-  return thumbImagesPath;
+  if (checkExistedFile(filename, width, height)) {
+    const imgPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
+    return imgPath;
+  } else {
+    const fullPath = path.resolve("src", "assets", "full", `${filename}.jpg`);
+    const thumbPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
+    const Image = await sharp(fullPath)
+      .resize(Number(width), Number(height))
+      .jpeg()
+      .toBuffer();
+    fs.writeFileSync(path.resolve(thumbPath), Image);
+    return thumbPath;
+  }
 };
 
 export default ImageTansform;
