@@ -16,18 +16,27 @@ app.listen(port, () => {
 });
 
 // here we will use sharp to resize the image
-// todo : the problem is that we override the file exists at that directory
 const ImageTansform = async (
   filename: string,
   width: number,
   height: number
 ) => {
   if (checkExistedFile(filename, width, height)) {
-    const imgPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
+    const imgPath = path.resolve(
+      "src",
+      "assets",
+      "thumb",
+      `${filename}_${width}_${height}.jpg`
+    );
     return imgPath;
   } else {
     const fullPath = path.resolve("src", "assets", "full", `${filename}.jpg`);
-    const thumbPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
+    const thumbPath = path.resolve(
+      "src",
+      "assets",
+      "thumb",
+      `${filename}_${width}_${height}.jpg`
+    );
     const Image = await sharp(fullPath)
       .resize(Number(width), Number(height))
       .jpeg()
