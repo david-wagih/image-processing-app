@@ -1,6 +1,5 @@
 // this one to test the Api endpoint
 import request from "supertest";
-import app from "../index";
 
 describe("GET /images", () => {
   it("should return a 200 response", async () => {

@@ -1,5 +1,5 @@
 import express from "express";
-import ImageTansform from "../..";
+import ImageTansform from "../../utilities";
 import { paramMiddleware } from "../../middlewares/paramMiddleware";
 
 const images = express.Router();
