@@ -2,9 +2,7 @@ import sharp from "sharp";
 import path from "path";
 import fs from "fs";
 import { checkExistedFile } from "./middlewares/checkExistedFile";
-import { paramMiddleware } from "./middlewares/paramMiddleware";
 
-// here we will use sharp to resize the image
 const ImageTansform = async (
   filename: string,
   width: number,

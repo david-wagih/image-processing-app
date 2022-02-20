@@ -10,7 +10,7 @@ const image_size_1 = __importDefault(require("image-size"));
 const checkExistedFile = (filename, width, height) => {
     const fullPath = path_1.default.resolve("src", "assets", "thumb", `${filename}.jpg`);
     try {
-        const Image = fs_1.default.readFileSync(fullPath); // the error is from here
+        const Image = fs_1.default.readFileSync(fullPath);
         if (Image) {
             const dimensions = (0, image_size_1.default)(Image);
             if (Image &&

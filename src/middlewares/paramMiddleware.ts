@@ -1,11 +1,6 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
-import { param } from "express-validator";
-
-// todo :  we can make middleware to check validitiy of the parameters
-// todo : we need to take into consideration all the test cases
-// todo : what is remaining is to check for the types of params
 
 export const paramMiddleware = (
   req: express.Request,
@@ -15,8 +10,6 @@ export const paramMiddleware = (
   const filename = req.query.filename as string;
   const width = Number(req.query.width as unknown as number);
   const height = Number(req.query.height as unknown as number);
-
-  // want to check for the type of the params
 
   try {
     typeof filename == "string" &&

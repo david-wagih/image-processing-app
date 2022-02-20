@@ -16,7 +16,6 @@ const sharp_1 = __importDefault(require("sharp"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const checkExistedFile_1 = require("./middlewares/checkExistedFile");
-// here we will use sharp to resize the image
 const ImageTansform = (filename, width, height) => __awaiter(void 0, void 0, void 0, function* () {
     if ((0, checkExistedFile_1.checkExistedFile)(filename, width, height)) {
         const imgPath = path_1.default.resolve("src", "assets", "thumb", `${filename}_${width}_${height}.jpg`);

@@ -6,14 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.paramMiddleware = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-// todo :  we can make middleware to check validitiy of the parameters
-// todo : we need to take into consideration all the test cases
-// todo : what is remaining is to check for the types of params
 const paramMiddleware = (req, res, next) => {
     const filename = req.query.filename;
     const width = Number(req.query.width);
     const height = Number(req.query.height);
-    // want to check for the type of the params
     try {
         typeof filename == "string" &&
             typeof width == "number" &&

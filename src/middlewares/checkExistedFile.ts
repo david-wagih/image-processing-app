@@ -9,7 +9,7 @@ export const checkExistedFile = (
 ): boolean | undefined => {
   const fullPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
   try {
-    const Image = fs.readFileSync(fullPath); // the error is from here
+    const Image = fs.readFileSync(fullPath);
     if (Image) {
       const dimensions = sizeOf(Image);
       if (
