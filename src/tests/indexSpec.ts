@@ -1,5 +1,6 @@
 import path from "path";
 import ImageTransform from "../index";
+import { checkExistedFile } from "../middlewares/checkExistedFile";
 
 describe("ImageTransform function running good", () => {
   it("should return the path of the image", async () => {
@@ -10,9 +11,9 @@ describe("ImageTransform function running good", () => {
   });
 });
 
-describe("server test", () => {
-  it("should return the server running", async () => {
-    const server = await import("../index");
-    expect(server).toBeTruthy();
+describe("CheckExistedFile test", () => {
+  it("should return false", async () => {
+    const result = checkExistedFile("santamonica", 100, 100);
+    expect(result).toBe(false);
   });
 });
