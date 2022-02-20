@@ -4,6 +4,7 @@ import routes from "./routes/index";
 import path from "path";
 import fs from "fs";
 import { checkExistedFile } from "./middlewares/checkExistedFile";
+import { paramMiddleware } from "./middlewares/paramMiddleware";
 
 const app = express();
 
