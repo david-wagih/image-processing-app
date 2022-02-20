@@ -8,6 +8,12 @@ Project Description :
   if it exists it get it from the disk and return it as response ,
   if it doesn't exist then a new one is created using the Sharp Module as i said.
 
+- you will find few tests done in different files named : indexSpec.ts , imageSpec.ts , serverSpec.ts
+
+in serverSpec.ts it is obvious that we are testing that server is running
+in indexSpec.ts we are testing the main ImageTransform Function and checkExistedFile functionin
+in imageSpec.ts we are testing our Endpoint Api using superTest Module by npm
+
 How to install Everything you need:
 
 - first you should go to our terminal and write npm install ,
