@@ -1,20 +1,8 @@
-import express from "express";
 import sharp from "sharp";
-import routes from "./routes/index";
 import path from "path";
 import fs from "fs";
 import { checkExistedFile } from "./middlewares/checkExistedFile";
 import { paramMiddleware } from "./middlewares/paramMiddleware";
-
-const app = express();
-
-const port = 3000;
-
-app.use("/api", routes);
-
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
-});
 
 // here we will use sharp to resize the image
 const ImageTansform = async (
