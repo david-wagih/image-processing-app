@@ -6,7 +6,7 @@ export const checkExistedFile = (
   filename: string,
   width: number,
   height: number
-) => {
+): boolean | undefined => {
   const fullPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
   try {
     const Image = fs.readFileSync(fullPath); // the error is from here

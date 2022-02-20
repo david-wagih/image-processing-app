@@ -11,7 +11,7 @@ export const paramMiddleware = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
-) => {
+): void => {
   const filename = req.query.filename as string;
   const width = Number(req.query.width as unknown as number);
   const height = Number(req.query.height as unknown as number);

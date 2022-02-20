@@ -9,7 +9,7 @@ const ImageTansform = async (
   filename: string,
   width: number,
   height: number
-) => {
+): Promise<string> => {
   if (checkExistedFile(filename, width, height)) {
     const imgPath = path.resolve(
       "src",
