@@ -4,11 +4,13 @@ import app from "../index";
 
 describe("GET /images", () => {
   it("should return a 200 response", async () => {
-    const response = await request(app).get("/api/images").query({
-      filename: "santamonica",
-      width: 200,
-      height: 200,
-    });
+    const response = await request("http://localhost:3000")
+      .get("/api/images")
+      .query({
+        filename: "santamonica",
+        width: 200,
+        height: 200,
+      });
     expect(response.status).toBe(200);
   });
 });
