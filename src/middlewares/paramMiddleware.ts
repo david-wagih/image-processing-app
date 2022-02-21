@@ -17,7 +17,7 @@ export const paramMiddleware = (
       typeof height == "number";
 
     try {
-      fs.readFileSync(path.resolve("src", "assets", "full", `${filename}.jpg`));
+      fs.readFileSync(path.resolve("assets", "full", `${filename}.jpg`));
       if (filename && width && height) {
         next();
       } else {

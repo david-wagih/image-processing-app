@@ -11,8 +11,11 @@ images.get(
     const filename = req.query.filename as unknown as string;
     const width = req.query.width as unknown as number;
     const height = req.query.height as unknown as number;
-
-    res.sendFile(await ImageTansform(filename, width, height));
+    try {
+      res.sendFile(await ImageTansform(filename, width, height));
+    } catch (error) {
+      res.status(404).send("error");
+    }
   }
 );
 images.use(paramMiddleware);

@@ -7,7 +7,12 @@ export const checkExistedFile = (
   width: number,
   height: number
 ): boolean | undefined => {
-  const fullPath = path.resolve("src", "assets", "thumb", `${filename}.jpg`);
+  const fullPath = path.join(
+    __dirname,
+    "assets",
+    "thumb",
+    `${filename}_${width}_${height}.jpg`
+  );
   try {
     const Image = fs.readFileSync(fullPath);
     if (Image) {

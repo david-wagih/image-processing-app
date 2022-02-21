@@ -6,7 +6,7 @@ describe("ImageTransform function", () => {
   it("should return the path of the image", async () => {
     const imagePath = await ImageTransform("santamonica", 100, 100);
     expect(imagePath).toBe(
-      path.join(__dirname, "assets", "thumb", "santamonica_100_100.jpg")
+      path.resolve("assets", "thumb", "santamonica_100_100.jpg")
     );
   });
 });

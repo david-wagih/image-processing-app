@@ -9,18 +9,15 @@ const ImageTansform = async (
   height: number
 ): Promise<string> => {
   if (checkExistedFile(filename, width, height)) {
-    const imgPath = path.join(
-      __dirname,
+    const imgPath = path.resolve(
       "assets",
       "thumb",
       `${filename}_${width}_${height}.jpg`
     );
     return imgPath;
   } else {
-    const fullPath = path.join(__dirname, "assets", "full", `${filename}.jpg`);
-    console.log(fullPath);
-    const thumbPath = path.join(
-      __dirname,
+    const fullPath = path.resolve("assets", "full", `${filename}.jpg`);
+    const thumbPath = path.resolve(
       "assets",
       "thumb",
       `${filename}_${width}_${height}.jpg`
